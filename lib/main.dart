@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:hw3/card_game.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Matching Card Game',
-      theme: ThemeData.dark(),
-      home: const GameScreen(),
-      debugShowCheckedModeBanner: false,
+    return ChangeNotifierProvider(
+      create: (context) => GameProvider(),
+      child: MaterialApp(
+        title: 'Matching Card Game',
+        home: const GameScreen(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
